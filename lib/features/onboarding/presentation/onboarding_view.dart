@@ -1,5 +1,5 @@
+import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
@@ -56,7 +56,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   OnboardingSkipButton(controller: _controller),
                 ],
               ),
-              SizedBox(height: 110.h),
+              const CustomSizedBox(height: 110),
               Expanded(
                 child: OnBoardingBody(
                   controller: _controller,

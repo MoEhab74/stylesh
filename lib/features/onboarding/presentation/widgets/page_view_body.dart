@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
@@ -17,7 +18,7 @@ class PageViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 32),
+        const CustomSizedBox(height: 32),
         Container(
           height: 290,
           width: 345,
@@ -28,7 +29,7 @@ class PageViewBody extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        const CustomSizedBox(height: 16),
         Text(
           onBoardingModel.title,
           textAlign: TextAlign.center,
@@ -38,7 +39,7 @@ class PageViewBody extends StatelessWidget {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
-        const SizedBox(height: 10),
+        const CustomSizedBox(height: 10),
         Text(
           onBoardingModel.subTitle,
           textAlign: TextAlign.center,

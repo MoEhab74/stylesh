@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
 import 'package:stylesh/features/onboarding/presentation/widgets/page_view_body.dart';
 
@@ -13,7 +14,7 @@ class OnBoardingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return CustomSizedBox(
       height: 550,
       child: PageView.builder(
         onPageChanged: onPageChanged,
