@@ -1,0 +1,15 @@
+flutter_native_splash:
+  color: "#FFFFFF"
+  android: true
+  ios: true
+  web: false
+  image: assets/images/splash.png
+  image_dark: assets/images/splash.png
+  color_dark: "#FFFFFF"
+  
+  # Android 12+ has a different splash screen system. You can configure it here:
+  android_12:
+    image: assets/images/splash.png
+    image_dark: assets/images/splash.png
+    color: "#FFFFFF"
+    color_dark: "#FFFFFF"
