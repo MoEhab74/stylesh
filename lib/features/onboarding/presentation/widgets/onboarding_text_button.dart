@@ -24,8 +24,12 @@ class OnBoardingTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed ?? () {},
+      // Next button will be replaced with Get Started and prev stays the same
+      // Check if the text = 'Next' and if we are on the last page, then change the text to 'Get Started'
       child: Text(
-        _currentIndex == onBoardingData.length - 1 ? 'Get Started' : text,
+        _currentIndex == onBoardingData.length - 1 && text == 'Next'
+            ? 'Get Started'
+            : text,
         style:
             textStyle ??
             AppTextStyles.montserratSemiBold18w600.copyWith(

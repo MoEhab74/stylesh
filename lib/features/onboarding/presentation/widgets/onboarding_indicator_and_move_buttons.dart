@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
+import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
 import 'package:stylesh/features/onboarding/presentation/widgets/onboarding_text_button.dart';
 
@@ -9,7 +10,8 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
     super.key,
     required int currentIndex,
     required PageController controller,
-  }) : _currentIndex = currentIndex, _controller = controller;
+  }) : _currentIndex = currentIndex,
+       _controller = controller;
 
   final int _currentIndex;
   final PageController _controller;
@@ -28,6 +30,9 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
             currentIndex: _currentIndex,
             controller: _controller,
             text: 'Prev',
+            textStyle: AppTextStyles.montserratSemiBold18w600.copyWith(
+              color: AppColors.textDarkGray,
+            ),
             onPressed: () {
               if (_currentIndex > 0) {
                 _controller.previousPage(
@@ -59,6 +64,9 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
           currentIndex: _currentIndex,
           controller: _controller,
           text: 'Next',
+          textStyle: AppTextStyles.montserratSemiBold18w600.copyWith(
+            color: AppColors.primaryColor,
+          ),
           onPressed: () {
             if (_currentIndex < onBoardingData.length - 1) {
               _controller.nextPage(
@@ -74,4 +82,3 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
     );
   }
 }
-
