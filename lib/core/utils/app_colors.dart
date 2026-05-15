@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stylesh/features/auth/login/presentation/views/login_view.dart';
 
 abstract class AppColors {
   // 0xFFC4C4C4
+  // #575757
   // ── PRIMARY ──────────────────────────────────────────
   static const primaryColor = Color(
     0xFFF83758,
@@ -14,12 +16,14 @@ abstract class AppColors {
   static const scaffoldBg = Color(0xFFFFFFFF);
   static const cardBg = Color(0xFFF5F5F5);
   static const splashBg = Color(0xFFF9F9F9);
+  static const textFieldBg = Color(0xFFF3F3F3);
 
   // ── TEXT ─────────────────────────────────────────────
   static const textSecondary = Color(0xFF575757);
   static const textMuted = Color(0xFF676767);
   static const textHint = Color(0xFFA8A8A9);
   static const textDarkGray = Color(0XFFA8A8A9);
+  static const iconColor = Color(0XFF626262);
 
   // ── ACCENT ───────────────────────────────────────────
   static const accentGreen = Color(0xFF3BB77E);
@@ -27,8 +31,8 @@ abstract class AppColors {
   static const accentYellow = Color(0xFFFFC107);
 
   // ── BORDER & DIVIDER ─────────────────────────────────
-  static const borderColor = Color(0xFFE8E8E8);
-  static const dividerColor = Color(0xFFEEEEEE);
+  static const borderColor = Color(0xFFA8A8A9);
+  static const dividerColor = Color(0xFF575757);
 
   // ── SOCIAL BUTTONS ────────────────────────────────────
   static const socialBorder = Color(0xFFDDDDDD);

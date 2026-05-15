@@ -8,9 +8,25 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w800,
     color: AppColors.secondaryColor,
   );
+  static TextStyle montserratExtraBold36w700 = TextStyle(
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.secondaryColor,
+  );
+  static const TextStyle montserrat16w600 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.whiteColor,
+  );
+
   static TextStyle montserratSemiBold14w600 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
+    color: AppColors.textSecondary,
+  );
+  static TextStyle montserratSemiBold11w500 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
     color: AppColors.textSecondary,
   );
   static TextStyle montserratSemiBold18w600 = TextStyle(

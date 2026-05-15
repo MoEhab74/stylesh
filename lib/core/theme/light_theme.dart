@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
+import 'package:stylesh/core/functions/build_outline_input_border.dart';
 
 final ThemeData lightTheme = ThemeData(
   useMaterial3: true,
@@ -42,9 +43,9 @@ final ThemeData lightTheme = ThemeData(
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.whiteColor,
       elevation: 0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      minimumSize: const Size(double.infinity, 50),
-      textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+      // minimumSize: const Size(double.infinity, 50),
+      textStyle: AppTextStyles.montserrat16w600,
     ),
   ),
 
@@ -70,25 +71,12 @@ final ThemeData lightTheme = ThemeData(
   // ── INPUT DECORATION ─────────────────────────────────
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: AppColors.cardBg,
-    hintStyle: const TextStyle(color: AppColors.textHint, fontSize: 14),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(color: AppColors.borderColor),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(color: AppColors.borderColor),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(color: AppColors.primaryColor, width: 1.5),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(color: AppColors.primaryColor),
-    ),
+    fillColor: AppColors.textFieldBg,
+    hintStyle: AppTextStyles.montserratMedium12w500,
+    border: buildOutlineInputBorder(AppColors.borderColor),
+    enabledBorder: buildOutlineInputBorder(AppColors.borderColor),
+    focusedBorder: buildOutlineInputBorder(AppColors.primaryColor),
+    errorBorder: buildOutlineInputBorder(AppColors.primaryColor),
   ),
 
   // ── TEXT THEME ───────────────────────────────────────
@@ -141,6 +129,7 @@ final ThemeData lightTheme = ThemeData(
     ),
     labelSmall: TextStyle(color: AppColors.textHint, fontSize: 11),
   ),
+  
 
   // ── ICON ─────────────────────────────────────────────
   iconTheme: const IconThemeData(color: AppColors.secondaryColor, size: 24),

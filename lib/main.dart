@@ -12,7 +12,6 @@ void main() {
 class Stylesh extends StatelessWidget {
   const Stylesh({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

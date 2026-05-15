@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:stylesh/core/routing/app_routes.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
@@ -75,6 +77,7 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
               );
             } else {
               // Navigate to the next screen, e.g., Login
+              GoRouter.of(context).pushReplacement(AppRoutes.login);
             }
           },
         ),
