@@ -1,3 +1,4 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
@@ -35,11 +36,11 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         hintText: widget.hintText,
         hintStyle: AppTextStyles.montserratHintTextStyle,
         prefixIcon: Padding(
-          padding: const EdgeInsets.only(
-            left: 12.0,
-            top: 16.0,
-            bottom: 16.0,
-            right: 1.0,
+          padding: EdgeInsets.only(
+            left: 12.0.w,
+            top: 16.0.h,
+            bottom: 16.0.h,
+            right: 1.0.w,
           ),
           child: CustomSizedBox(
             width: 24,

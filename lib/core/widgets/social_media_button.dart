@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
 
 class SocialMediaButton extends StatelessWidget {
@@ -13,14 +14,14 @@ class SocialMediaButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Ink(
-      width: 48,
-      height: 48,
+      width: 48.w,
+      height: 48.h,
       decoration: BoxDecoration(
         color: AppColors.primaryColor.withAlpha(20),
         shape: BoxShape.circle,
         border: Border.all(
           color: AppColors.primaryColor, // Set your border color here
-          width: 1.0,
+          width: 1.0.w,
         ),
       ),
       child: InkWell(

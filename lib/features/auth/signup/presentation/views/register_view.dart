@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/widgets/auth_screen_title.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
@@ -17,9 +18,9 @@ class RegisterView extends StatelessWidget {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 32,
-              ).copyWith(top: 19),
+              padding: EdgeInsets.symmetric(
+                horizontal: 32.w,
+              ).copyWith(top: 19.h),
               child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

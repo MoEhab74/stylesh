@@ -13,8 +13,8 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w700,
     color: AppColors.secondaryColor,
   );
-  static const TextStyle montserrat16w600 = TextStyle(
-    fontSize: 16,
+  static TextStyle montserrat16w600 = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.whiteColor,
   );
@@ -59,5 +59,4 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.textHint,
   );
-  
 }
