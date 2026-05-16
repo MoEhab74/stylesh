@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stylesh/features/auth/login/presentation/views/login_view.dart';
 
 abstract class AppColors {
   // 0xFFC4C4C4
