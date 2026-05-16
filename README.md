@@ -20,11 +20,7 @@ This project focuses on scalable structure, responsive design, and maintainable 
 
 ## 📸 Screenshots
 
-| Home Screen | Login Screen |
-|-------------|--------------|
-| Add screenshots here | Add screenshots here |
-
-> You can upload screenshots later inside a `screenshots` folder and link them here.
+> I'll upload screenshots from the app soon.
 
 ---
 
@@ -33,7 +29,7 @@ This project focuses on scalable structure, responsive design, and maintainable 
 - **Flutter**
 - **Dart**
 - **Material Design**
-- **Cubit / Bloc** *(if used)*
+- **Cubit / Bloc**
 - **Responsive UI**
 - **Clean Architecture**
 
@@ -125,7 +121,7 @@ This project follows:
 
 ## 👨‍💻 Author
 
-### Mohamed Ehab Abdel Fattah
+### Mohamed Ehab AbdelFattah
 
 - Flutter Developer
 - Faculty of Computers and Information — Mansoura University
