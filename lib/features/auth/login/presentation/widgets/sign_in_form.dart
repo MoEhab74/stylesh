@@ -23,10 +23,16 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
-  final TextEditingController emailOrUsernameController =
-      TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  late final TextEditingController emailOrUsernameController;
+  late final TextEditingController passwordController;
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    emailOrUsernameController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -54,6 +60,7 @@ class _SignInFormState extends State<SignInForm> {
           child: Column(
             children: [
               AppTextFormField(
+                controller: emailOrUsernameController,
                 validator: validateEmail(emailOrUsernameController.text.trim()),
                 hintText: 'Username or Email',
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsUser),
@@ -61,6 +68,7 @@ class _SignInFormState extends State<SignInForm> {
               ),
               const CustomSizedBox(height: 32),
               AppTextFormField(
+                controller: passwordController,
                 validator: validatePassword(passwordController.text.trim()),
                 hintText: 'Password',
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsLock),
@@ -82,11 +90,14 @@ class _SignInFormState extends State<SignInForm> {
                 ),
               ),
               const CustomSizedBox(height: 52),
-              AppElevatedButton(onPressed: () {
-                if (loginFormKey.currentState!.validate()) {
-                  // I'll handle the actual login logic later
-                }
-              }, buttonText: 'Login'),
+              AppElevatedButton(
+                onPressed: () {
+                  if (loginFormKey.currentState!.validate()) {
+                    // I'll handle the actual login logic later
+                  }
+                },
+                buttonText: 'Login',
+              ),
               const CustomSizedBox(height: 75),
               // Divider
               Row(

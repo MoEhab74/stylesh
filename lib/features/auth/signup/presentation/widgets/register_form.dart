@@ -9,8 +9,6 @@ import 'package:stylesh/core/widgets/app_text_form_field.dart';
 import 'package:stylesh/core/widgets/auth_suggestion_widget.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:stylesh/core/widgets/social_media_button.dart';
-import 'package:stylesh/features/auth/login/presentation/cubit/login_cubit.dart';
-import 'package:stylesh/features/auth/login/presentation/cubit/login_state.dart';
 import 'package:stylesh/features/auth/signup/presentation/cubit/register_cubit.dart';
 import 'package:stylesh/features/auth/signup/presentation/cubit/register_state.dart';
 import 'package:stylesh/generated/assets.dart';
@@ -23,12 +21,20 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final TextEditingController emailOrUsernameController =
-      TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  late final TextEditingController emailOrUsernameController;
+  late final TextEditingController passwordController;
+  late final TextEditingController confirmPasswordController;
   final GlobalKey<FormState> registerFormKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    // Initialize controllers
+    emailOrUsernameController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+    super.initState();
+  }
+
   @override
   void dispose() {
     emailOrUsernameController.dispose();
@@ -55,6 +61,7 @@ class _RegisterFormState extends State<RegisterForm> {
           child: Column(
             children: [
               AppTextFormField(
+                controller: emailOrUsernameController,
                 validator: validateEmail(emailOrUsernameController.text.trim()),
                 hintText: 'Username or Email',
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsUser),
@@ -62,6 +69,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               const CustomSizedBox(height: 32),
               AppTextFormField(
+                controller: passwordController,
                 validator: validatePassword(passwordController.text.trim()),
                 hintText: 'Password',
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsLock),
@@ -69,6 +77,7 @@ class _RegisterFormState extends State<RegisterForm> {
               ),
               const CustomSizedBox(height: 32),
               AppTextFormField(
+                controller: confirmPasswordController,
                 validator: validateConfirmPassword(
                   passwordController.text.trim(),
                   confirmPasswordController.text.trim(),

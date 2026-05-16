@@ -19,8 +19,13 @@ class ForgetPasswordForm extends StatefulWidget {
 }
 
 class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
-  final TextEditingController _emailController = TextEditingController();
+  late final TextEditingController _emailController;
   final _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    super.initState();
+  }
   @override
   void dispose() {
     _emailController.dispose();
