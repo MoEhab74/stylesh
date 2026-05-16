@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stylesh/core/routing/app_routes.dart';
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/core/widgets/app_elevated_button.dart';
 import 'package:stylesh/core/widgets/app_text_form_field.dart';
@@ -62,7 +63,7 @@ class _SignInFormState extends State<SignInForm> {
               AppTextFormField(
                 controller: emailOrUsernameController,
                 validator: validateEmail(emailOrUsernameController.text.trim()),
-                hintText: 'Username or Email',
+                hintText: AppStrings.usernameOrEmail,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsUser),
                 isPassword: false,
               ),
@@ -70,7 +71,7 @@ class _SignInFormState extends State<SignInForm> {
               AppTextFormField(
                 controller: passwordController,
                 validator: validatePassword(passwordController.text.trim()),
-                hintText: 'Password',
+                hintText: AppStrings.password,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsLock),
                 isPassword: true,
               ),
@@ -86,7 +87,7 @@ class _SignInFormState extends State<SignInForm> {
                   onPressed: () {
                     GoRouter.of(context).push(AppRoutes.forgetPassword);
                   },
-                  child: const Text('Forgot Password?'),
+                  child: const Text(AppStrings.forgotPassword),
                 ),
               ),
               const CustomSizedBox(height: 52),
@@ -96,7 +97,7 @@ class _SignInFormState extends State<SignInForm> {
                     // I'll handle the actual login logic later
                   }
                 },
-                buttonText: 'Login',
+                buttonText: AppStrings.login,
               ),
               const CustomSizedBox(height: 75),
               // Divider
@@ -107,7 +108,7 @@ class _SignInFormState extends State<SignInForm> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      'OR Continue with',
+                      AppStrings.orContinueWith,
                       style: AppTextStyles.montserratMedium12w500,
                     ),
                   ),
@@ -150,8 +151,8 @@ class _SignInFormState extends State<SignInForm> {
               const CustomSizedBox(height: 28),
               //  Sign up suggestion
               AuthSuggestionWidget(
-                suggestionText: 'Don\'t have an account? ',
-                actionText: 'Sign Up',
+                suggestionText: AppStrings.dontHaveAnAccount,
+                actionText: AppStrings.signUp,
                 onActionPressed: () {
                   GoRouter.of(context).push(AppRoutes.register);
                 },

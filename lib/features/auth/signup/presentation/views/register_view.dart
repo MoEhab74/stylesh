@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/widgets/auth_screen_title.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:stylesh/features/auth/signup/presentation/widgets/register_form.dart';
@@ -19,11 +20,11 @@ class RegisterView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: 32,
               ).copyWith(top: 19),
-              child: Column(
+              child: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const AuthScreenTitle(title: "Create an \naccount"),
-                  const CustomSizedBox(height: 36),
+                  AuthScreenTitle(title: AppStrings.createAnAccount),
+                  CustomSizedBox(height: 36),
                   RegisterForm(),
                 ],
               ),
@@ -34,4 +35,3 @@ class RegisterView extends StatelessWidget {
     );
   }
 }
-

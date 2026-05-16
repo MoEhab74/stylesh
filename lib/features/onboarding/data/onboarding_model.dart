@@ -1,3 +1,4 @@
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/generated/assets.dart';
 
 class OnBoardingModel {
@@ -15,20 +16,17 @@ class OnBoardingModel {
 List<OnBoardingModel> onBoardingData = [
   OnBoardingModel(
     image: Assets.assetsImagesOnboarding1,
-    title: 'Choose Products',
-    subTitle:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+    title: AppStrings.onboardingTitle1,
+    subTitle: AppStrings.onboardingSubTitle,
   ),
   OnBoardingModel(
     image: Assets.assetsImagesOnboarding3,
-    title: 'Make Payment',
-    subTitle:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+    title: AppStrings.onboardingTitle2,
+    subTitle: AppStrings.onboardingSubTitle,
   ),
   OnBoardingModel(
     image: Assets.assetsImagesOnboarding2,
-    title: 'Get Your Order',
-    subTitle:
-        'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.',
+    title: AppStrings.onboardingTitle3,
+    subTitle: AppStrings.onboardingSubTitle,
   ),
 ];

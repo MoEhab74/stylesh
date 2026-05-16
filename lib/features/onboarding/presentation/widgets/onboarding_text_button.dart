@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
 
@@ -27,8 +28,8 @@ class OnBoardingTextButton extends StatelessWidget {
       // Next button will be replaced with Get Started and prev stays the same
       // Check if the text = 'Next' and if we are on the last page, then change the text to 'Get Started'
       child: Text(
-        _currentIndex == onBoardingData.length - 1 && text == 'Next'
-            ? 'Get Started'
+        _currentIndex == onBoardingData.length - 1 && text == AppStrings.next
+            ? AppStrings.getStarted
             : text,
         style:
             textStyle ??

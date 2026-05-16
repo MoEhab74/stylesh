@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stylesh/core/functions/validate_auth_fields.dart';
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/core/widgets/app_elevated_button.dart';
 import 'package:stylesh/core/widgets/app_text_form_field.dart';
@@ -63,7 +64,7 @@ class _RegisterFormState extends State<RegisterForm> {
               AppTextFormField(
                 controller: emailOrUsernameController,
                 validator: validateEmail(emailOrUsernameController.text.trim()),
-                hintText: 'Username or Email',
+                hintText: AppStrings.usernameOrEmail,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsUser),
                 isPassword: false,
               ),
@@ -71,7 +72,7 @@ class _RegisterFormState extends State<RegisterForm> {
               AppTextFormField(
                 controller: passwordController,
                 validator: validatePassword(passwordController.text.trim()),
-                hintText: 'Password',
+                hintText: AppStrings.password,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsLock),
                 isPassword: true,
               ),
@@ -82,7 +83,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   passwordController.text.trim(),
                   confirmPasswordController.text.trim(),
                 ),
-                hintText: 'Confirm Password',
+                hintText: AppStrings.confirmPassword,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsLock),
                 isPassword: true,
               ),
@@ -92,17 +93,17 @@ class _RegisterFormState extends State<RegisterForm> {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: 'By clicking the ',
+                      text: AppStrings.byClickingThe,
                       style: AppTextStyles.montserratRegular14w400,
                     ),
                     TextSpan(
-                      text: 'Sign Up ',
+                      text: AppStrings.signUpButtonText,
                       style: AppTextStyles.montserratMedium12w500.copyWith(
                         color: Theme.of(context).primaryColor,
                       ),
                     ),
                     TextSpan(
-                      text: 'button, you agree to the public offer',
+                      text: AppStrings.agreeToPublicOffer,
                       style: AppTextStyles.montserratRegular14w400,
                     ),
                   ],
@@ -115,7 +116,7 @@ class _RegisterFormState extends State<RegisterForm> {
                     // I'll handle the actual registration logic later
                   }
                 },
-                buttonText: 'Sign Up',
+                buttonText: AppStrings.signUp,
               ),
               const CustomSizedBox(height: 75),
               // Divider
@@ -126,7 +127,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
-                      'OR Continue with',
+                      AppStrings.orContinueWith,
                       style: AppTextStyles.montserratMedium12w500,
                     ),
                   ),
@@ -169,8 +170,8 @@ class _RegisterFormState extends State<RegisterForm> {
               const CustomSizedBox(height: 28),
               //  Sign up suggestion
               AuthSuggestionWidget(
-                suggestionText: 'Already have an account? ',
-                actionText: 'Login',
+                suggestionText: AppStrings.alreadyHaveAnAccount,
+                actionText: AppStrings.login,
                 onActionPressed: () {
                   GoRouter.of(context).pop();
                 },

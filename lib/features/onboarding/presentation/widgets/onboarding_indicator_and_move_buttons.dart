@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stylesh/core/routing/app_routes.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/features/onboarding/data/onboarding_model.dart';
 import 'package:stylesh/features/onboarding/presentation/widgets/onboarding_text_button.dart';
@@ -31,7 +32,7 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
           child: OnBoardingTextButton(
             currentIndex: _currentIndex,
             controller: _controller,
-            text: 'Prev',
+            text: AppStrings.prev,
             textStyle: AppTextStyles.montserratSemiBold18w600.copyWith(
               color: AppColors.textDarkGray,
             ),
@@ -65,7 +66,9 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
         OnBoardingTextButton(
           currentIndex: _currentIndex,
           controller: _controller,
-          text: 'Next',
+          text: _currentIndex == onBoardingData.length - 1
+              ? AppStrings.getStarted
+              : AppStrings.next,
           textStyle: AppTextStyles.montserratSemiBold18w600.copyWith(
             color: AppColors.primaryColor,
           ),

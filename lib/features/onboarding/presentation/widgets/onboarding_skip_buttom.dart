@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
+import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
 
 class OnboardingSkipButton extends StatelessWidget {
@@ -22,7 +23,7 @@ class OnboardingSkipButton extends StatelessWidget {
           }
         },
         child: Text(
-          'Skip',
+          AppStrings.skip,
           style: AppTextStyles.montserratSemiBold18w600.copyWith(
             color: AppColors.secondaryColor,
           ),
