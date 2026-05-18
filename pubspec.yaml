@@ -31,6 +31,7 @@ dependencies:
   animated_snack_bar: ^0.4.0
   bloc: ^9.2.1
   cupertino_icons: ^1.0.8
+  dio: ^5.9.2
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
