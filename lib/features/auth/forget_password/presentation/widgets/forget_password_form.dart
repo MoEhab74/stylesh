@@ -53,7 +53,8 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
               const AuthScreenTitle(title: "Forget \nPassword?"),
               const CustomSizedBox(height: 36),
               AppTextFormField(
-                validator: validateEmail(_emailController.text.trim()),
+                controller: _emailController,
+                validator: validateEmail,
                 hintText: 'Enter Your Email Address',
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsUser),
                 isPassword: false,

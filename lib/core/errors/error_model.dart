@@ -1,6 +1,7 @@
 import 'package:stylesh/core/api/api_endpoints.dart';
 
 class ErrorModel {
+  // These fields should match the structure of the error response from your API
   final String message;
   final int? statusCode;
 

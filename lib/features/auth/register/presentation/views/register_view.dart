@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/widgets/auth_screen_title.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
-import 'package:stylesh/features/auth/signup/presentation/widgets/register_form.dart';
+import 'package:stylesh/features/auth/register/presentation/widgets/register_form.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});

@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/routing/app_router.dart';
+import 'package:stylesh/core/services/get_it_sevice.dart';
 import 'package:stylesh/core/utils/app_theme.dart';
 import 'package:stylesh/generated/l10n.dart';
 
 void main() {
+  // Make sure Flutter is initialized
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize GetIt
+  setupGetIt();
+
   runApp(const Stylesh());
 }
 

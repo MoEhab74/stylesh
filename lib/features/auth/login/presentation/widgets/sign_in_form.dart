@@ -5,15 +5,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stylesh/core/routing/app_routes.dart';
 import 'package:stylesh/core/utils/app_strings.dart';
-import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/core/widgets/app_elevated_button.dart';
 import 'package:stylesh/core/widgets/app_text_form_field.dart';
 import 'package:stylesh/core/widgets/auth_suggestion_widget.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
-import 'package:stylesh/core/widgets/social_media_button.dart';
 import 'package:stylesh/features/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:stylesh/features/auth/login/presentation/cubit/login_state.dart';
 import 'package:stylesh/core/functions/validate_auth_fields.dart';
+import 'package:stylesh/core/widgets/or_continue_with_divider.dart';
+import 'package:stylesh/core/widgets/social_media_login_row.dart';
 import 'package:stylesh/generated/assets.dart';
 
 class SignInForm extends StatefulWidget {
@@ -62,7 +62,7 @@ class _SignInFormState extends State<SignInForm> {
             children: [
               AppTextFormField(
                 controller: emailOrUsernameController,
-                validator: validateEmail(emailOrUsernameController.text.trim()),
+                validator: validateEmail,
                 hintText: AppStrings.usernameOrEmail,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsUser),
                 isPassword: false,
@@ -70,7 +70,7 @@ class _SignInFormState extends State<SignInForm> {
               const CustomSizedBox(height: 32),
               AppTextFormField(
                 controller: passwordController,
-                validator: validatePassword(passwordController.text.trim()),
+                validator: validatePassword,
                 hintText: AppStrings.password,
                 prefixIcon: SvgPicture.asset(Assets.assetsIconsLock),
                 isPassword: true,
@@ -101,53 +101,10 @@ class _SignInFormState extends State<SignInForm> {
               ),
               const CustomSizedBox(height: 75),
               // Divider
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Expanded(child: Divider()),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      AppStrings.orContinueWith,
-                      style: AppTextStyles.montserratMedium12w500,
-                    ),
-                  ),
-                  const Expanded(child: Divider()),
-                ],
-              ),
+              const OrContinueWithDivider(),
               const CustomSizedBox(height: 32),
               // Social media buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialMediaButton(
-                    socialMediaIcon: SvgPicture.asset(
-                      Assets.assetsIconsGoogle,
-                      width: 24,
-                      height: 24,
-                    ),
-                    onPressed: () {},
-                  ),
-                  CustomSizedBox(width: 12),
-                  SocialMediaButton(
-                    socialMediaIcon: SvgPicture.asset(
-                      Assets.assetsIconsFacebook,
-                      width: 24,
-                      height: 24,
-                    ),
-                    onPressed: () {},
-                  ),
-                  CustomSizedBox(width: 12),
-                  SocialMediaButton(
-                    socialMediaIcon: SvgPicture.asset(
-                      Assets.assetsIconsApple,
-                      width: 24,
-                      height: 24,
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              ),
+              const SocialMediaLoginRow(),
               const CustomSizedBox(height: 28),
               //  Sign up suggestion
               AuthSuggestionWidget(
