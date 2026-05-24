@@ -29,6 +29,7 @@ class AppStrings {
   static const String dontHaveAnAccount = 'Don\'t have an account? ';
 
   // Onboarding
+  static const String isFirstVisitKey = 'is_First_Visit';
   static const String onboardingTitle1 = 'Choose Products';
   static const String onboardingTitle2 = 'Make Payment';
   static const String onboardingTitle3 = 'Get Your Order';

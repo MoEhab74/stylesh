@@ -10,41 +10,41 @@ import 'package:stylesh/features/auth/register/data/repos/register_repo.dart';
 import 'package:stylesh/features/auth/register/presentation/cubit/register_cubit.dart';
 import 'package:stylesh/features/auth/register/presentation/views/register_view.dart';
 import 'package:stylesh/features/onboarding/presentation/onboarding_view.dart';
-import 'package:stylesh/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
-  static final router = GoRouter(
-    initialLocation: AppRoutes.onBoarding,
-    routes: [
-      GoRoute(
-        path: AppRoutes.splash,
-        builder: (context, state) => const SplashView(),
-      ),
-      GoRoute(
-        path: AppRoutes.onBoarding,
-        builder: (context, state) => const OnBoardingView(),
-      ),
-      GoRoute(
-        path: AppRoutes.login,
-        builder: (context, state) => BlocProvider(
-          create: (context) => LoginCubit(),
-          child: const LoginView(),
+  static late final GoRouter router;
+
+  static void setupRouter({required bool isFirstVisit}) {
+    router = GoRouter(
+      // Check for the first time the user opens the app to show the onboarding screen
+      initialLocation: isFirstVisit ? AppRoutes.onBoarding : AppRoutes.login,
+      routes: [
+        GoRoute(
+          path: AppRoutes.onBoarding,
+          builder: (context, state) => const OnBoardingView(),
         ),
-      ),
-      GoRoute(
-        path: AppRoutes.register,
-        builder: (context, state) => BlocProvider(
-          create: (context) => RegisterCubit(getit<RegisterRepo>()),
-          child: const RegisterView(),
+        GoRoute(
+          path: AppRoutes.login,
+          builder: (context, state) => BlocProvider(
+            create: (context) => LoginCubit(),
+            child: const LoginView(),
+          ),
         ),
-      ),
-      GoRoute(
-        path: AppRoutes.forgetPassword,
-        builder: (context, state) => BlocProvider(
-          create: (context) => ForgetPasswordCubit(),
-          child: const ForgetPasswordView(),
+        GoRoute(
+          path: AppRoutes.register,
+          builder: (context, state) => BlocProvider(
+            create: (context) => RegisterCubit(getit<RegisterRepo>()),
+            child: const RegisterView(),
+          ),
         ),
-      ),
-    ],
-  );
+        GoRoute(
+          path: AppRoutes.forgetPassword,
+          builder: (context, state) => BlocProvider(
+            create: (context) => ForgetPasswordCubit(),
+            child: const ForgetPasswordView(),
+          ),
+        ),
+      ],
+    );
+  }
 }

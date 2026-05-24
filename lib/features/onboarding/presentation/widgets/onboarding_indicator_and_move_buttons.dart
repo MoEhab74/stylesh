@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:stylesh/core/routing/app_routes.dart';
+import 'package:stylesh/core/services/get_it_sevice.dart';
+import 'package:stylesh/core/services/onboarding_service.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
 import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/utils/text_styles.dart';
@@ -80,7 +82,9 @@ class OnBoardingIndicatorAndMoveButtons extends StatelessWidget {
               );
             } else {
               // Navigate to the next screen, e.g., Login
+              // Complete the onboarding process and set the first visit flag to false
               GoRouter.of(context).pushReplacement(AppRoutes.login);
+              getit<OnboardingService>().completeOnboarding();
             }
           },
         ),
