@@ -47,8 +47,9 @@ class CacheHelper {
     return sharedPreferences.containsKey(key);
   }
 
+  // This method to clear all shared preferences data
   Future<bool> clearData({required String key}) async {
-    return sharedPreferences.clear();
+    return await sharedPreferences.clear();
   }
 
   //! this fun to put data in local data base using key

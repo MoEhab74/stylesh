@@ -5,6 +5,7 @@ import 'package:stylesh/core/cache/cache_helper.dart';
 import 'package:stylesh/core/cache/secure_cache_helper.dart';
 import 'package:stylesh/core/routing/app_router.dart';
 import 'package:stylesh/core/services/get_it_sevice.dart';
+import 'package:stylesh/core/services/is_logged_in_service.dart';
 import 'package:stylesh/core/services/onboarding_service.dart';
 import 'package:stylesh/core/utils/app_theme.dart';
 import 'package:stylesh/generated/l10n.dart';
@@ -23,8 +24,12 @@ void main() async {
   final onboardingService = getit<OnboardingService>();
   final bool isFirstVisit = await onboardingService.isFirstVisit();
 
+  // 2. Initialize your IsLoggedInService & Check login status
+  final isLoggedInService = getit<IsLoggedInService>();
+  final bool isLoggedIn = await isLoggedInService.isLoggedIn();
+
   // 3. Setup the AppRouter synchronously using the boolean result
-  AppRouter.setupRouter(isFirstVisit: isFirstVisit);
+  AppRouter.setupRouter(isFirstVisit: isFirstVisit, isLoggedIn: isLoggedIn);
 
   runApp(const Stylesh());
 }

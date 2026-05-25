@@ -14,10 +14,19 @@ import 'package:stylesh/features/onboarding/presentation/onboarding_view.dart';
 abstract class AppRouter {
   static late final GoRouter router;
 
-  static void setupRouter({required bool isFirstVisit}) {
+  static void setupRouter({
+    required bool isFirstVisit,
+    required bool isLoggedIn,
+  }) {
     router = GoRouter(
       // Check for the first time the user opens the app to show the onboarding screen
-      initialLocation: isFirstVisit ? AppRoutes.onBoarding : AppRoutes.login,
+      // Check if user isLoggedIn or not before showing the login screen
+      // If not logged in, show login, else show home screen
+      initialLocation: isFirstVisit
+          ? AppRoutes.onBoarding
+          : isLoggedIn
+          ? AppRoutes.home
+          : AppRoutes.login,
       routes: [
         GoRoute(
           path: AppRoutes.onBoarding,

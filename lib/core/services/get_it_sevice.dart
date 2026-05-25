@@ -4,6 +4,7 @@ import 'package:stylesh/core/api/api_consumer.dart';
 import 'package:stylesh/core/api/dio_consumer.dart';
 import 'package:stylesh/core/cache/cache_helper.dart';
 import 'package:stylesh/core/cache/secure_cache_helper.dart';
+import 'package:stylesh/core/services/is_logged_in_service.dart';
 import 'package:stylesh/core/services/onboarding_service.dart';
 import 'package:stylesh/features/auth/register/data/repos/register_repo.dart';
 import 'package:stylesh/features/auth/register/data/repos/register_repo_implementation.dart';
@@ -19,4 +20,5 @@ void setupGetIt() {
   getit.registerLazySingleton<CacheHelper>(() => CacheHelper());
   getit.registerLazySingleton<SecureCacheHelper>(() => SecureCacheHelper());
   getit.registerLazySingleton<OnboardingService>(() => OnboardingService(getit<CacheHelper>()));
+  getit.registerLazySingleton<IsLoggedInService>(() => IsLoggedInService(getit<CacheHelper>()));
 }
