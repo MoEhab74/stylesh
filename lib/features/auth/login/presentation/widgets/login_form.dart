@@ -1,8 +1,10 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:stylesh/core/functions/animated_snack_bar.dart';
 import 'package:stylesh/core/routing/app_routes.dart';
 import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/widgets/app_elevated_button.dart';
@@ -16,14 +18,14 @@ import 'package:stylesh/core/widgets/or_continue_with_divider.dart';
 import 'package:stylesh/core/widgets/social_media_login_row.dart';
 import 'package:stylesh/generated/assets.dart';
 
-class SignInForm extends StatefulWidget {
-  const SignInForm({super.key});
+class LogInForm extends StatefulWidget {
+  const LogInForm({super.key});
 
   @override
-  State<SignInForm> createState() => _SignInFormState();
+  State<LogInForm> createState() => _LogInFormState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _LogInFormState extends State<LogInForm> {
   late final TextEditingController emailOrUsernameController;
   late final TextEditingController passwordController;
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -47,15 +49,26 @@ class _SignInFormState extends State<SignInForm> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          // Handle successful login, e.g., navigate to the home screen
+          showAnimatedSnackbar(
+            context,
+            message: 'Login successful',
+            type: AnimatedSnackBarType.success,
+          );
+
+          Future.delayed(const Duration(seconds: 2), () {
+            if (context.mounted) {
+              context.pushReplacement(AppRoutes.home);
+            }
+          });
         } else if (state is LoginFailure) {
-          // Handle login failure, e.g., show an error message
-        } else if (state is LoginLoading) {
-          // Handle loading state, e.g., show a loading indicator
+          showAnimatedSnackbar(
+            context,
+            message: 'Login failed',
+            type: AnimatedSnackBarType.error,
+          );
         }
       },
       builder: (context, state) {
-        // LoginCubit loginCubit = BlocProvider.of<LoginCubit>(context);
         return Form(
           key: loginFormKey,
           child: Column(
@@ -91,14 +104,19 @@ class _SignInFormState extends State<SignInForm> {
                 ),
               ),
               const CustomSizedBox(height: 52),
-              AppElevatedButton(
-                onPressed: () {
-                  if (loginFormKey.currentState!.validate()) {
-                    // I'll handle the actual login logic later
-                  }
-                },
-                buttonText: AppStrings.login,
-              ),
+              state is LoginLoading
+                  ? const CircularProgressIndicator()
+                  : AppElevatedButton(
+                      onPressed: () {
+                        if (loginFormKey.currentState!.validate()) {
+                          BlocProvider.of<LoginCubit>(context).login(
+                            email: emailOrUsernameController.text,
+                            password: passwordController.text,
+                          );
+                        }
+                      },
+                      buttonText: AppStrings.login,
+                    ),
               const CustomSizedBox(height: 75),
               // Divider
               const OrContinueWithDivider(),

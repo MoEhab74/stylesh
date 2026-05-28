@@ -51,10 +51,14 @@ class _RegisterFormState extends State<RegisterForm> {
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterSuccess) {
-          // Handle successful registration, e.g., navigate to the home screen
           showAnimatedSnackbar(context, message: 'Registration successful');
+          // Navigate to login screen after successful registration
+          Future.delayed(const Duration(seconds: 2), () {
+            if (context.mounted) {
+              GoRouter.of(context).pop();
+            }
+          });
         } else if (state is RegisterFailure) {
-          // Handle registration failure, e.g., show an error message
           showAnimatedSnackbar(context, message: 'Registration failed');
         }
       },
@@ -132,4 +136,3 @@ class _RegisterFormState extends State<RegisterForm> {
     );
   }
 }
-

@@ -4,22 +4,12 @@ import 'package:dartz/dartz.dart';
 import 'package:stylesh/core/api/api_consumer.dart';
 import 'package:stylesh/core/api/api_endpoints.dart';
 import 'package:stylesh/core/errors/error_model.dart';
-import 'package:stylesh/core/errors/server_exception.dart';
 import 'package:stylesh/features/auth/register/data/models/user_model.dart';
 import 'package:stylesh/features/auth/register/data/repos/register_repo.dart';
 
 class RegisterRepoImplementation implements RegisterRepo {
   final ApiConsumer apiConsumer;
   RegisterRepoImplementation({required this.apiConsumer});
-
-  @override
-  Future<Either<ServerException, Map<String, dynamic>>> login({
-    required String email,
-    required String password,
-  }) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
 
   @override
   Future<Either<ErrorModel, UserModel>> register({

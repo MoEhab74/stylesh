@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/utils/app_strings.dart';
 import 'package:stylesh/core/widgets/auth_screen_title.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
-import 'package:stylesh/features/auth/login/presentation/widgets/sign_in_form.dart';
+import 'package:stylesh/features/auth/login/presentation/widgets/login_form.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -26,7 +26,7 @@ class LoginView extends StatelessWidget {
                 children: [
                   AuthScreenTitle(title: AppStrings.welcomeBack),
                   CustomSizedBox(height: 36),
-                  SignInForm(),
+                  LogInForm(),
                 ],
               ),
             ),

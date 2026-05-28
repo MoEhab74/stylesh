@@ -4,11 +4,13 @@ import 'package:stylesh/core/routing/app_routes.dart';
 import 'package:stylesh/core/services/get_it_sevice.dart';
 import 'package:stylesh/features/auth/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:stylesh/features/auth/forget_password/presentation/views/forget_password_view.dart';
+import 'package:stylesh/features/auth/login/data/repos/login_repo.dart';
 import 'package:stylesh/features/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:stylesh/features/auth/login/presentation/views/login_view.dart';
 import 'package:stylesh/features/auth/register/data/repos/register_repo.dart';
 import 'package:stylesh/features/auth/register/presentation/cubit/register_cubit.dart';
 import 'package:stylesh/features/auth/register/presentation/views/register_view.dart';
+import 'package:stylesh/features/home/presentation/views/home_view.dart';
 import 'package:stylesh/features/onboarding/presentation/onboarding_view.dart';
 
 abstract class AppRouter {
@@ -35,7 +37,7 @@ abstract class AppRouter {
         GoRoute(
           path: AppRoutes.login,
           builder: (context, state) => BlocProvider(
-            create: (context) => LoginCubit(),
+            create: (context) => LoginCubit(loginRepo: getit<LoginRepo>()),
             child: const LoginView(),
           ),
         ),
@@ -53,6 +55,7 @@ abstract class AppRouter {
             child: const ForgetPasswordView(),
           ),
         ),
+        GoRoute(path: AppRoutes.home, builder: (context, state) => HomeView()),
       ],
     );
   }

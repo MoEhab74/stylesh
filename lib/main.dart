@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:stylesh/core/api/api_interceptors.dart';
 import 'package:stylesh/core/cache/cache_helper.dart';
 import 'package:stylesh/core/cache/secure_cache_helper.dart';
 import 'package:stylesh/core/routing/app_router.dart';
+import 'package:stylesh/core/routing/app_routes.dart';
 import 'package:stylesh/core/services/get_it_sevice.dart';
 import 'package:stylesh/core/services/is_logged_in_service.dart';
 import 'package:stylesh/core/services/onboarding_service.dart';
@@ -34,8 +38,26 @@ void main() async {
   runApp(const Stylesh());
 }
 
-class Stylesh extends StatelessWidget {
+class Stylesh extends StatefulWidget {
   const Stylesh({super.key});
+
+  @override
+  State<Stylesh> createState() => _StyleshState();
+}
+
+class _StyleshState extends State<Stylesh> {
+  late StreamSubscription<AuthEvent> _authEventSubscription;
+
+  @override
+  initState() {
+    super.initState();
+    // 4. Subscribe to the AuthEventBus to listen for logout events
+    _authEventSubscription = AuthEventBus.instance.stream.listen((event) {
+      if (event == AuthEvent.logout) {
+        AppRouter.router.go(AppRoutes.login);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
