@@ -139,7 +139,7 @@ final ThemeData darkTheme = ThemeData(
   cardTheme: CardThemeData(
     color: AppColors.darkCardBg,
     elevation: 2,
-    shadowColor: AppColors.blackColor.withOpacity(0.3),
+    shadowColor: AppColors.blackColor.withValues(alpha: 0.3),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(12),
     ),

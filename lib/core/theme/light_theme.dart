@@ -25,7 +25,7 @@ final ThemeData lightTheme = ThemeData(
 
   // ── APPBAR ───────────────────────────────────────────
   appBarTheme: const AppBarTheme(
-    backgroundColor: AppColors.scaffoldBg,
+    backgroundColor: AppColors.homeBg,
     foregroundColor: AppColors.secondaryColor,
     elevation: 0,
     centerTitle: true,
@@ -135,7 +135,7 @@ final ThemeData lightTheme = ThemeData(
   iconTheme: const IconThemeData(color: AppColors.secondaryColor, size: 24),
 
   // ── BOTTOM NAV BAR ───────────────────────────────────
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
     backgroundColor: AppColors.scaffoldBg,
     selectedItemColor: AppColors.navActive,
     unselectedItemColor: AppColors.navInactive,
@@ -143,13 +143,19 @@ final ThemeData lightTheme = ThemeData(
     showUnselectedLabels: true,
     type: BottomNavigationBarType.fixed,
     elevation: 8,
+    selectedLabelStyle: AppTextStyles.montserratRegular12w400.copyWith(
+      color: AppColors.navActive,
+    ),
+    unselectedLabelStyle: AppTextStyles.montserratRegular12w400.copyWith(
+      color: AppColors.navInactive,
+    ),
   ),
 
   // ── CARD ─────────────────────────────────────────────
   cardTheme: CardThemeData(
     color: AppColors.scaffoldBg,
     elevation: 2,
-    shadowColor: AppColors.blackColor.withOpacity(0.08),
+    shadowColor: AppColors.blackColor.withValues(alpha: 0.08),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   ),
 

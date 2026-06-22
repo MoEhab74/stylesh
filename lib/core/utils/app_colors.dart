@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   // 0xFFC4C4C4
   // #575757
+  // 0xFFFDFDFD
+  // 0xFFF2F2F2
   // ── PRIMARY ──────────────────────────────────────────
   static const primaryColor = Color(
     0xFFF83758,
@@ -13,6 +15,7 @@ abstract class AppColors {
 
   // ── BACKGROUND ───────────────────────────────────────
   static const scaffoldBg = Color(0xFFFFFFFF);
+  static const homeBg = Color(0xFFF9F9F9);
   static const cardBg = Color(0xFFF5F5F5);
   static const splashBg = Color(0xFFF9F9F9);
   static const textFieldBg = Color(0xFFF3F3F3);
@@ -23,6 +26,7 @@ abstract class AppColors {
   static const textHint = Color(0xFFA8A8A9);
   static const textDarkGray = Color(0XFFA8A8A9);
   static const iconColor = Color(0XFF626262);
+  static const hintTextMain = Color(0xFFBBBBBB);
 
   // ── ACCENT ───────────────────────────────────────────
   static const accentGreen = Color(0xFF3BB77E);
@@ -32,16 +36,19 @@ abstract class AppColors {
   // ── BORDER & DIVIDER ─────────────────────────────────
   static const borderColor = Color(0xFFA8A8A9);
   static const dividerColor = Color(0xFF575757);
+  static const iconBg = Color(0xFFF2F2F2);
 
   // ── SOCIAL BUTTONS ────────────────────────────────────
   static const socialBorder = Color(0xFFDDDDDD);
 
   // ── BADGE ─────────────────────────────────────────────
   static const cartBadge = Color(0xFFF83758);
+  static const Color bannerPinkLight = Color(0xFFFF7B9C);
+static const Color bannerPinkDark = Color(0xFFFF4D79);
 
   // ── BOTTOM NAV ────────────────────────────────────────
   static const navActive = Color(0xFFF83758);
-  static const navInactive = Color(0xFFA8A8A9);
+  static const navInactive = Color(0xFF000000);
 
   // ── DISCOUNT TAG ──────────────────────────────────────
   static const discountRed = Color(0xFFF83758);

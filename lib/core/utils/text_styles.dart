@@ -19,6 +19,12 @@ abstract class AppTextStyles {
     color: AppColors.whiteColor,
   );
 
+  static TextStyle montserratSemiBold12w600 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColors.whiteColor,
+  );
+
   static TextStyle montserratSemiBold14w600 = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
@@ -34,6 +40,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.primaryColor,
   );
+  static TextStyle montserratBold20w700 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.primaryColor,
+  );
   static TextStyle montserrat12w400 = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
@@ -43,6 +54,11 @@ abstract class AppTextStyles {
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
     color: AppColors.textSecondary,
+  );
+  static TextStyle montserratRegular12w400 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.blackColor,
   );
   static TextStyle montserratMedium12w500 = TextStyle(
     fontSize: 12.sp,

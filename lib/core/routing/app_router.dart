@@ -10,6 +10,9 @@ import 'package:stylesh/features/auth/login/presentation/views/login_view.dart';
 import 'package:stylesh/features/auth/register/data/repos/register_repo.dart';
 import 'package:stylesh/features/auth/register/presentation/cubit/register_cubit.dart';
 import 'package:stylesh/features/auth/register/presentation/views/register_view.dart';
+import 'package:stylesh/features/home/data/repos/home_repo.dart';
+import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products_cubit.dart';
+import 'package:stylesh/features/home/presentation/cubit/categories_cubit.dart';
 import 'package:stylesh/features/home/presentation/views/home_view.dart';
 import 'package:stylesh/features/onboarding/presentation/onboarding_view.dart';
 
@@ -55,7 +58,21 @@ abstract class AppRouter {
             child: const ForgetPasswordView(),
           ),
         ),
-        GoRoute(path: AppRoutes.home, builder: (context, state) => HomeView()),
+        GoRoute(
+          path: AppRoutes.home,
+          builder: (context, state) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => ProductsCubit(homeRepo: getit<HomeRepo>())..getProducts(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    CategoriesCubit(homeRepo: getit<HomeRepo>())..getCategories(),
+              ),
+            ],
+            child: HomeView(),
+          ),
+        ),
       ],
     );
   }

@@ -1,4 +1,6 @@
 class AppStrings {
+  static const String appName = 'Stylesh';
+
   // Validation Messages
   static const String emailIsRequired = 'Email is required';
   static const String invalidEmailFormat = 'Invalid email format';

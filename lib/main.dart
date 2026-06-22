@@ -60,6 +60,12 @@ class _StyleshState extends State<Stylesh> {
   }
 
   @override
+  void dispose() {
+    _authEventSubscription.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
