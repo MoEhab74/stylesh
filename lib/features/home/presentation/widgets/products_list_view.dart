@@ -120,7 +120,6 @@ class _ProductHorizontalListSectionState
                 padding: EdgeInsets.all(12.w),
                 itemCount: products.length + (isPaginationLoading ? 1 : 0),
                 itemBuilder: (context, index) {
-                  // لو آخر item وإحنا بنحمّل → شوّف indicator
                   if (index == products.length) {
                     return Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.w),
