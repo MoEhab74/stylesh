@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:stylesh/features/home/data/models/category_model.dart';
-import 'package:stylesh/features/home/presentation/cubit/categories_cubit.dart';
+import 'package:stylesh/features/home/presentation/cubit/categories_cubit/categories_cubit.dart';
 import 'package:stylesh/features/home/presentation/cubit/categories_cubit/categories_state.dart';
 import 'package:stylesh/features/home/presentation/widgets/categories_list_view_item_builder.dart';
 

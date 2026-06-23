@@ -12,8 +12,9 @@ import 'package:stylesh/features/auth/register/presentation/cubit/register_cubit
 import 'package:stylesh/features/auth/register/presentation/views/register_view.dart';
 import 'package:stylesh/features/home/data/repos/home_repo.dart';
 import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products_cubit.dart';
-import 'package:stylesh/features/home/presentation/cubit/categories_cubit.dart';
+import 'package:stylesh/features/home/presentation/cubit/categories_cubit/categories_cubit.dart';
 import 'package:stylesh/features/home/presentation/views/home_view.dart';
+import 'package:stylesh/features/home/presentation/views/category_products_view.dart';
 import 'package:stylesh/features/onboarding/presentation/onboarding_view.dart';
 
 abstract class AppRouter {
@@ -72,6 +73,21 @@ abstract class AppRouter {
             ],
             child: HomeView(),
           ),
+        ),
+        GoRoute(
+          path: AppRoutes.categoryProducts,
+          builder: (context, state) {
+            final Map<String, String> extra =
+                state.extra as Map<String, String>;
+            final String categoryId = extra['categoryId']!;
+            final String categoryName = extra['categoryName']!;
+            return BlocProvider(
+              create: (context) =>
+                  ProductsCubit(homeRepo: getit<HomeRepo>())
+                    ..getProductsByCategory(categoryId: categoryId),
+              child: CategoryProductsView(categoryName: categoryName),
+            );
+          },
         ),
       ],
     );

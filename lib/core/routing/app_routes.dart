@@ -11,5 +11,6 @@ abstract class AppRoutes {
   static const profile = '/profile';
   static const shop =  '/shop';
   static const trendingProducts = '/trendingProducts';
+  static const categoryProducts = '/categoryProducts';
 
 }

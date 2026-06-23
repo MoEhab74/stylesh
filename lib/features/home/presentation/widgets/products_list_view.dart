@@ -7,14 +7,58 @@ import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products
 import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products_state.dart';
 import 'package:stylesh/features/home/presentation/widgets/product_card_widget.dart';
 
-class ProductHorizontalListSection extends StatelessWidget {
+class ProductHorizontalListSection extends StatefulWidget {
   const ProductHorizontalListSection({super.key});
+
+  @override
+  State<ProductHorizontalListSection> createState() =>
+      _ProductHorizontalListSectionState();
+}
+
+class _ProductHorizontalListSectionState
+    extends State<ProductHorizontalListSection> {
+  final ScrollController _scrollController = ScrollController();
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    // لو المستخدم وصل لـ 90% من اللست → اطلب المزيد
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+
+    if (currentScroll >= maxScroll * 0.9) {
+      context.read<ProductsCubit>().getMoreProducts();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ProductsCubit, ProductsState>(
       listener: (context, state) {
-        if (state is ProductsError) {}
+        if (state is ProductsError || state is ProductsPaginationError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state is ProductsError
+                    ? state.message
+                    : state is ProductsPaginationError
+                    ? state.message
+                    : "Try agin Later",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          );
+        }
       },
       builder: (context, state) {
         if (state is ProductsLoading || state is ProductsInitial) {
@@ -38,45 +82,70 @@ class ProductHorizontalListSection extends StatelessWidget {
             ),
           );
         }
+        List<ProductModel> products = [];
+        bool hasMore = false;
+        bool isPaginationLoading = false;
+
         if (state is ProductsLoaded) {
-          final List<ProductModel> products = state.products;
-          return Container(
-            height: 285.w,
-            margin: EdgeInsets.symmetric(horizontal: 16.w),
-            decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              borderRadius: BorderRadius.circular(12.r),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withValues(alpha: 0.2),
-                  blurRadius: 4,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Stack(
-              children: [
-                ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.all(12.w),
-                  itemCount: products.length,
-                  itemBuilder: (context, index) =>
-                      ProductCard(product: products[index]),
-                ),
-                Positioned(right: 8.w, top: 100.w, child: _ArrowButton()),
-              ],
-            ),
-          );
+          products = state.products;
+          hasMore = state.hasMore!;
+        } else if (state is ProductsPaginationLoading) {
+          products = state.products;
+          isPaginationLoading = true;
+        } else if (state is ProductsPaginationError) {
+          products = state.products;
         }
-        return const SizedBox.shrink();
+
+        if (products.isEmpty) return const SizedBox.shrink();
+
+        return Container(
+          height: 285.w,
+          margin: EdgeInsets.symmetric(horizontal: 16.w),
+          decoration: BoxDecoration(
+            color: AppColors.whiteColor,
+            borderRadius: BorderRadius.circular(12.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withValues(alpha: 0.2),
+                blurRadius: 4,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          child: Stack(
+            children: [
+              ListView.builder(
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.all(12.w),
+                itemCount: products.length + (isPaginationLoading ? 1 : 0),
+                itemBuilder: (context, index) {
+                  // لو آخر item وإحنا بنحمّل → شوّف indicator
+                  if (index == products.length) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.w),
+                      child: const Center(child: CircularProgressIndicator()),
+                    );
+                  }
+                  return ProductCard(product: products[index]);
+                },
+              ),
+              Positioned(
+                right: 8.w,
+                top: 100.w,
+                child: _ArrowButton(scrollController: _scrollController),
+              ),
+            ],
+          ),
+        );
       },
     );
   }
 }
 
 class _ArrowButton extends StatelessWidget {
-  const _ArrowButton();
-
+  const _ArrowButton({required this.scrollController});
+  final ScrollController scrollController;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -95,7 +164,13 @@ class _ArrowButton extends StatelessWidget {
       ),
       child: IconButton(
         icon: const Icon(Icons.arrow_forward_ios, size: 16),
-        onPressed: () {},
+        onPressed: () {
+          scrollController.animateTo(
+            scrollController.offset + 200,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+          );
+        },
         color: AppColors.primaryColor,
       ),
     );

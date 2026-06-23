@@ -6,6 +6,9 @@ class ApiEndpoints {
   static const String profile = 'auth/profile';
   static const String products = 'products';
   static const String categories = 'categories';
+  static String productsByCategory(String categoryId) {
+    return 'products/?categoryId=$categoryId';
+  }
 }
 
 class ApiKeys {
