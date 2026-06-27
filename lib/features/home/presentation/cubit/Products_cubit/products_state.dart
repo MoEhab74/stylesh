@@ -11,6 +11,15 @@ class ProductsLoaded extends ProductsState {
   final bool? hasMore;
   ProductsLoaded({required this.products, this.hasMore});
 }
+class ProductDetailsLoading extends ProductsState {}
+class ProductDetailsLoaded extends ProductsState {
+  final ProductModel product;
+  ProductDetailsLoaded({required this.product});
+}
+class ProductDetailsError extends ProductsState {
+  final String message;
+  ProductDetailsError({required this.message});
+}
 
 class ProductsPaginationLoading extends ProductsState {
   final List<ProductModel> products;

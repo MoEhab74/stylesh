@@ -8,9 +8,13 @@ import 'package:stylesh/features/home/presentation/widgets/bottom_bar_item.dart'
 import 'package:stylesh/features/home/presentation/widgets/home_view_body.dart';
 import 'package:stylesh/features/home/presentation/widgets/search_view_body.dart';
 import 'package:stylesh/features/home/presentation/widgets/settings_view_body.dart';
-import 'package:stylesh/features/home/presentation/widgets/shopping_cart_view_body.dart';
+import 'package:stylesh/features/home/presentation/widgets/product_details_view_body.dart';
 import 'package:stylesh/features/home/presentation/widgets/wishlist_view_body.dart';
 import 'package:stylesh/generated/assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stylesh/core/services/get_it_sevice.dart';
+import 'package:stylesh/features/home/data/repos/home_repo.dart';
+import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products_cubit.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -21,10 +25,20 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
-  final List<Widget> pages = [
+  List<Widget> get pages => [
     const HomeViewBody(), // 0
     const WishlistViewBody(), // 1
-    const ShoppingCartViewBody(), // 2
+    BlocProvider(
+      create: (context) => ProductsCubit(homeRepo: getit<HomeRepo>()),
+      child: ProductDetailViewBody(
+        productId: 1,
+        onBackPressed: () {
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
+      ),
+    ), // 2
     const SearchViewBody(), // 3
     const SettingsViewBody(), // 4
   ];
@@ -118,7 +132,7 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         backgroundColor: AppColors.homeBg,
-        appBar: const CustomAppBar(),
+        appBar: _selectedIndex == 2 ? null : const CustomAppBar(),
         body: pages[_selectedIndex],
       ),
     );

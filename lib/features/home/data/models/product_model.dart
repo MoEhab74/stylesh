@@ -63,27 +63,3 @@ class ProductModel {
     );
   }
 }
-
-
- const List<ProductModel> products = [
-    ProductModel(
-      imageUrl: "https://placehold.co/150x150/FF6B6B/FFFFFF?text=Kurta",
-      title: "Women Printed Kurta",
-      description: "Neque porro quisquam est qui dolorem ipsum quia",
-      currentPrice: "₹1500",
-      oldPrice: "₹3000",
-      discount: "50% off",
-      rating: 4.5,
-      reviewCount: 56890,
-    ),
-    ProductModel(
-      imageUrl: "https://placehold.co/150x150/4ECDC4/FFFFFF?text=Sneaker",
-      title: "HRX by Hrithik Roshan",
-      description: "Neque porro quisquam est qui dolorem ipsum quia",
-      currentPrice: "₹2499",
-      oldPrice: "₹4999",
-      discount: "50% off",
-      rating: 4.7,
-      reviewCount: 344567,
-    ),
-  ];

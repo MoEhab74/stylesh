@@ -68,4 +68,14 @@ class ProductsCubit extends Cubit<ProductsState> {
       (products) => emit(ProductsLoaded(products: products)),
     );
   }
+
+  // Get a single product by id
+  Future<void> getProductById({required int productId}) async {
+    emit(ProductDetailsLoading());
+    final response = await homeRepo.getProductById(productId: productId);
+    response.fold(
+      (error) => emit(ProductDetailsError(message: error.message)),
+      (product) => emit(ProductDetailsLoaded(product: product)),
+    );
+  }
 }

@@ -15,6 +15,7 @@ import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products
 import 'package:stylesh/features/home/presentation/cubit/categories_cubit/categories_cubit.dart';
 import 'package:stylesh/features/home/presentation/views/home_view.dart';
 import 'package:stylesh/features/home/presentation/views/category_products_view.dart';
+import 'package:stylesh/features/home/presentation/widgets/product_details_view_body.dart';
 import 'package:stylesh/features/onboarding/presentation/onboarding_view.dart';
 
 abstract class AppRouter {
@@ -64,11 +65,13 @@ abstract class AppRouter {
           builder: (context, state) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => ProductsCubit(homeRepo: getit<HomeRepo>())..getProducts(),
+                create: (context) =>
+                    ProductsCubit(homeRepo: getit<HomeRepo>())..getProducts(),
               ),
               BlocProvider(
                 create: (context) =>
-                    CategoriesCubit(homeRepo: getit<HomeRepo>())..getCategories(),
+                    CategoriesCubit(homeRepo: getit<HomeRepo>())
+                      ..getCategories(),
               ),
             ],
             child: HomeView(),
@@ -86,6 +89,26 @@ abstract class AppRouter {
                   ProductsCubit(homeRepo: getit<HomeRepo>())
                     ..getProductsByCategory(categoryId: categoryId),
               child: CategoryProductsView(categoryName: categoryName),
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.productDetails,
+          builder: (context, state) {
+            final extra = state.extra;
+            final int productId;
+            if (extra is Map) {
+              productId = extra['productId'] as int? ?? 1;
+            } else if (extra is int) {
+              productId = extra;
+            } else {
+              productId = 1;
+            }
+            return BlocProvider(
+              create: (context) => ProductsCubit(homeRepo: getit<HomeRepo>()),
+              child: ProductDetailViewBody(
+                productId: productId,
+              ),
             );
           },
         ),

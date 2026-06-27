@@ -34,7 +34,7 @@ class ProductCard extends StatelessWidget {
                   oldPrice: product.oldPrice,
                   discount: product.discount,
                 ),
-                const Spacer(),
+                // const Spacer(),
                 ProductRatingRow(
                   rating: product.rating,
                   reviewCount: product.reviewCount,

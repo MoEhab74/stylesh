@@ -7,10 +7,10 @@ abstract class AppRoutes {
   static const onBoarding = '/onBoarding';
   static const placeOrder = '/placeOrder';
   static const checkout = '/checkout';
-  static const shipping = '/shipping';
   static const profile = '/profile';
   static const shop =  '/shop';
   static const trendingProducts = '/trendingProducts';
   static const categoryProducts = '/categoryProducts';
+  static const productDetails = '/productDetails';
 
 }

@@ -15,10 +15,10 @@ class HomeRepoImpl implements HomeRepo {
     required int offset,
   }) async {
     try {
-      final response = await apiConsumer.get(ApiEndpoints.products, queryParameters: {
-        'offset': offset,
-        'limit': limit,
-      });
+      final response = await apiConsumer.get(
+        ApiEndpoints.products,
+        queryParameters: {'offset': offset, 'limit': limit},
+      );
       List<ProductModel> products = [];
       for (var product in response) {
         products.add(ProductModel.fromJson(product));
@@ -56,6 +56,20 @@ class HomeRepoImpl implements HomeRepo {
         products.add(ProductModel.fromJson(product));
       }
       return right(products);
+    } on Exception catch (e) {
+      return left(ErrorModel(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<ErrorModel, ProductModel>> getProductById({
+    required int productId,
+  }) async {
+    try {
+      final response = await apiConsumer.get(
+        '${ApiEndpoints.products}/$productId',
+      );
+      return right(ProductModel.fromJson(response));
     } on Exception catch (e) {
       return left(ErrorModel(message: e.toString()));
     }

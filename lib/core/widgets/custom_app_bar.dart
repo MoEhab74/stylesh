@@ -15,24 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: Center(
-        child: Container(
-          width: 40.w,
-          height: 40.h,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.iconBg,
-          ),
-          child: AppBarIconWidget(
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(),
-            hoverColor: Colors.transparent,
-            icon: SvgPicture.asset(
-              Assets.assetsIconsMenueIcon,
-              width: 24.w,
-              height: 24.h,
-            ),
-          ),
-        ),
+        child: CustomAppBarIconWidget(),
       ),
       centerTitle: true,
       title: Row(
@@ -62,4 +45,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class CustomAppBarIconWidget extends StatelessWidget {
+  const CustomAppBarIconWidget({
+    super.key,
+    this.icon,
+  });
+  final Widget? icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 40.w,
+      height: 40.h,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: AppColors.iconBg,
+      ),
+      child: AppBarIconWidget(
+        padding: EdgeInsets.zero,
+        constraints: const BoxConstraints(),
+        hoverColor: Colors.transparent,
+        icon: icon ??
+            SvgPicture.asset(
+              Assets.assetsIconsMenueIcon,
+              width: 24.w,
+              height: 24.h,
+            ),
+      ),
+    );
+  }
 }

@@ -85,7 +85,7 @@ class HomeViewBody extends StatelessWidget {
             dealIcon: Icons.alarm_outlined,
           ),
           // Products ListView
-          ProductHorizontalListSection(),
+          const ProductHorizontalListSection(),
 
           // Speacial Offers Container
         ],

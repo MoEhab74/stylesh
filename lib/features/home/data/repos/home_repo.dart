@@ -12,4 +12,5 @@ abstract class HomeRepo {
   Future<Either<ErrorModel, List<ProductModel>>> getProductsByCategory({
     required String categoryId,
   });
+  Future<Either<ErrorModel, ProductModel>> getProductById({required int productId});
 }

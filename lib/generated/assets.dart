@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for assetsFontsMontserratBold
   /// assets/fonts/Montserrat-Bold.ttf
   static const String assetsFontsMontserratBold = "assets/fonts/Montserrat-Bold.ttf";
@@ -21,6 +21,10 @@ class Assets {
   /// Assets for assetsFontsMontserratSemiBold
   /// assets/fonts/Montserrat-SemiBold.ttf
   static const String assetsFontsMontserratSemiBold = "assets/fonts/Montserrat-SemiBold.ttf";
+
+  /// Assets for assetsIconsUser
+  /// assets/icons/User.svg
+  static const String assetsIconsUser = "assets/icons/User.svg";
 
   /// Assets for assetsIconsApple
   /// assets/icons/apple.svg
@@ -70,9 +74,9 @@ class Assets {
   /// assets/icons/shopping-cart.svg
   static const String assetsIconsShoppingCart = "assets/icons/shopping-cart.svg";
 
-  /// Assets for assetsIconsUser
-  /// assets/icons/User.svg
-  static const String assetsIconsUser = "assets/icons/User.svg";
+  /// Assets for assetsImagesUser
+  /// assets/images/User.png
+  static const String assetsImagesUser = "assets/images/User.png";
 
   /// Assets for assetsImagesAppBarIcon
   /// assets/images/appBar_icon.png
@@ -102,8 +106,4 @@ class Assets {
   /// assets/images/splash.png
   static const String assetsImagesSplash = "assets/images/splash.png";
 
-  /// Assets for assetsImagesUser
-  /// assets/images/User.png
-  static const String assetsImagesUser = "assets/images/User.png";
 }
-
