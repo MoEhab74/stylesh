@@ -2,19 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:stylesh/core/utils/app_colors.dart';
+import 'package:stylesh/core/utils/text_styles.dart';
 import 'package:stylesh/core/widgets/custom_app_bar.dart';
 import 'package:stylesh/core/widgets/custom_sized_box.dart';
 import 'package:stylesh/features/home/presentation/widgets/bottom_bar_item.dart';
 import 'package:stylesh/features/home/presentation/widgets/home_view_body.dart';
 import 'package:stylesh/features/home/presentation/widgets/search_view_body.dart';
 import 'package:stylesh/features/home/presentation/widgets/settings_view_body.dart';
-import 'package:stylesh/features/home/presentation/widgets/product_details_view_body.dart';
 import 'package:stylesh/features/home/presentation/widgets/wishlist_view_body.dart';
 import 'package:stylesh/generated/assets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:stylesh/core/services/get_it_sevice.dart';
-import 'package:stylesh/features/home/data/repos/home_repo.dart';
-import 'package:stylesh/features/home/presentation/cubit/Products_cubit/products_cubit.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -28,15 +24,12 @@ class _HomeViewState extends State<HomeView> {
   List<Widget> get pages => [
     const HomeViewBody(), // 0
     const WishlistViewBody(), // 1
-    BlocProvider(
-      create: (context) => ProductsCubit(homeRepo: getit<HomeRepo>()),
-      child: ProductDetailViewBody(
-        productId: 1,
-        onBackPressed: () {
-          setState(() {
-            _selectedIndex = 0;
-          });
-        },
+    Center(
+      child: Text(
+        'Please browse products to see them here.',
+        style: AppTextStyles.montserratSemiBold14w600.copyWith(
+          color: AppColors.textSecondary,
+        ),
       ),
     ), // 2
     const SearchViewBody(), // 3

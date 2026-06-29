@@ -25,9 +25,9 @@ class ProductCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _ProductTitle(title: product.title),
+                ProductTitle(title: product.title),
                 SizedBox(height: 4.w),
-                _ProductDescription(description: product.description),
+                ProductDescription(description: product.description),
                 SizedBox(height: 6.w),
                 ProductPriceRow(
                   currentPrice: product.currentPrice,
@@ -72,40 +72,65 @@ class _ProductImage extends StatelessWidget {
   }
 }
 
-class _ProductTitle extends StatelessWidget {
+class ProductTitle extends StatelessWidget {
   final String title;
+  final TextStyle? style;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final Color? color;
 
-  const _ProductTitle({required this.title});
+  const ProductTitle({
+    super.key,
+    required this.title,
+    this.style,
+    this.maxLines,
+    this.overflow,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: AppTextStyles.montserratSemiBold14w600.copyWith(
-        color: AppColors.blackColor,
-        fontSize: 14.sp,
-      ),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
+      style: style ??
+          AppTextStyles.montserratSemiBold14w600.copyWith(
+            color: color ?? AppColors.blackColor,
+            fontSize: 14.sp,
+          ),
+      maxLines: maxLines ?? 1,
+      overflow: overflow ?? TextOverflow.ellipsis,
     );
   }
 }
 
-class _ProductDescription extends StatelessWidget {
+class ProductDescription extends StatelessWidget {
   final String description;
+  final TextStyle? style;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final Color? color;
 
-  const _ProductDescription({required this.description});
+  const ProductDescription({
+    super.key,
+    required this.description,
+    this.style,
+    this.maxLines,
+    this.overflow,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Text(
       description,
-      style: AppTextStyles.montserratRegular12w400.copyWith(
-        color: AppColors.borderColor,
-        fontSize: 12.sp,
-      ),
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
+      style: style ??
+          AppTextStyles.montserratRegular12w400.copyWith(
+            color: color ?? AppColors.borderColor,
+            fontSize: 12.sp,
+          ),
+      maxLines: maxLines ?? 1,
+      overflow: overflow ?? TextOverflow.ellipsis,
     );
   }
 }
+

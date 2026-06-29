@@ -4,6 +4,7 @@ import 'package:stylesh/core/api/api_endpoints.dart';
 import 'package:stylesh/core/errors/error_model.dart';
 import 'package:stylesh/features/home/data/models/product_model.dart';
 import 'package:stylesh/features/home/data/models/category_model.dart';
+import 'package:stylesh/core/errors/server_exception.dart';
 import 'package:stylesh/features/home/data/repos/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -70,6 +71,8 @@ class HomeRepoImpl implements HomeRepo {
         '${ApiEndpoints.products}/$productId',
       );
       return right(ProductModel.fromJson(response));
+    } on ServerException catch (e) {
+      return left(e.errorModel);
     } on Exception catch (e) {
       return left(ErrorModel(message: e.toString()));
     }
